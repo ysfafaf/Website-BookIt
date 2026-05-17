@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@layer components {
+  .btn-primary-sm {
+    @apply bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors;
+  }
+  .btn-success-sm {
+    @apply bg-green-600 hover:bg-green-700 text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors;
+  }
+  .btn-danger-sm {
+    @apply bg-red-500 hover:bg-red-600 text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors;
+  }
+}
