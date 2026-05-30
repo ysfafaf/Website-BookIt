@@ -1,3 +1,9 @@
+Tugas Mata Kuliah Rekayasa Perangkat Lunak
+Kelompok 3
+
+- Yusuf Afaf Nur Abdillah (21120124130100)
+
+
 # Nuxt Minimal Starter
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
