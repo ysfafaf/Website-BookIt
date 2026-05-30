@@ -82,9 +82,9 @@ const typeCapacity: Record<string, string> = {
 }
 
 const typeDesc: Record<string, string> = {
-  'Small Table':  '',
-  'Medium Table': '',
-  'Large Table':  ''
+  'Small Table':  'Perfect for couples or small groups',
+  'Medium Table': 'Great for family dinners or lunches',
+  'Large Table':  'Ideal for parties and large gatherings'
 }
 
 const formatDate = (d: string) =>
@@ -102,6 +102,9 @@ const formatDate = (d: string) =>
       <h1 style="font-size:24px;font-weight:700;color:#1C1917;font-family:'Playfair Display',serif;margin:0 0 4px;">
         Make a Reservation
       </h1>
+      <p style="margin:0;color:#78716C;font-size:14px;">
+        Follow the steps below to book your table
+      </p>
     </div>
 
     <!-- ── Step indicator ── -->
@@ -157,7 +160,16 @@ const formatDate = (d: string) =>
          STEP 1 — Date & Time
     ════════════════════════════════════════ -->
     <div v-if="step === 1"
-      style="width:100%;max-width:620px;background:transparent;border:1px solid #E5E7EB;border-radius:16px;padding:32px;">
+      style="width:100%;max-width:620px;background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:32px;box-shadow:0 1px 8px rgba(0,0,0,0.04);">
+
+      <div style="margin-bottom:24px;">
+        <h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1C1917;margin:0 0 4px;">
+          Select Date & Time
+        </h2>
+        <p style="margin:0;font-size:13px;color:#78716C;">
+          Choose when you'd like to dine with us
+        </p>
+      </div>
 
       <!-- Date input -->
       <div style="margin-bottom:24px;">
@@ -203,9 +215,12 @@ const formatDate = (d: string) =>
          STEP 2 — Table Type
     ════════════════════════════════════════ -->
     <div v-if="step === 2"
-      style="width:100%;max-width:620px;background:transparent;border:1px solid #E5E7EB;border-radius:16px;padding:32px;">
+      style="width:100%;max-width:620px;background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:32px;box-shadow:0 1px 8px rgba(0,0,0,0.04);">
 
       <div style="margin-bottom:6px;">
+        <h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1C1917;margin:0 0 4px;">
+          Choose Table Type
+        </h2>
         <p style="margin:0;font-size:13px;color:#78716C;">
           Showing available tables for
           <strong style="color:#1C1917;">{{ formatDate(date) }}</strong>
@@ -265,7 +280,12 @@ const formatDate = (d: string) =>
           </div>
 
           <!-- Available badge -->
-          
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;">
+            <span style="background:#D1FAE5;color:#065F46;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap;">
+              ✓ Available
+            </span>
+            <span style="font-size:12px;color:#78716C;">Tap to select →</span>
+          </div>
         </button>
       </div>
 
@@ -281,14 +301,14 @@ const formatDate = (d: string) =>
          STEP 3 — Notes
     ════════════════════════════════════════ -->
     <div v-if="step === 3"
-      style="width:100%;max-width:620px;background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:32px;">
+      style="width:100%;max-width:620px;background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:32px;box-shadow:0 1px 8px rgba(0,0,0,0.04);">
 
       <div style="margin-bottom:24px;">
         <h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1C1917;margin:0 0 4px;">
           Special Requests
         </h2>
         <p style="margin:0;font-size:13px;color:#78716C;">
-           (optional)
+          Let us know if you have any special requirements (optional)
         </p>
       </div>
 
@@ -301,7 +321,7 @@ const formatDate = (d: string) =>
            {{ time }}
         </span>
         <span style="display:inline-flex;align-items:center;gap:6px;background:#FEF3C7;color:#92400E;font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;">
-          {{ selectedType?.name }}
+          {{ typeIcon[selectedType?.name] ?? '' }} {{ selectedType?.name }}
         </span>
       </div>
 
@@ -313,11 +333,14 @@ const formatDate = (d: string) =>
         <textarea
           v-model="description"
           rows="4"
-          placeholder=""
+          placeholder="e.g. Anniversary dinner, need high chair, window seat preferred, allergy info..."
           style="width:100%;padding:12px 14px;border:1.5px solid #E5E7EB;border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical;outline:none;background:#FAFAF9;color:#1C1917;box-sizing:border-box;line-height:1.6;transition:border-color 0.15s;"
           @focus="($event.target as HTMLTextAreaElement).style.borderColor = '#D97706'"
           @blur="($event.target as HTMLTextAreaElement).style.borderColor = '#E5E7EB'"
         ></textarea>
+        <p style="margin:6px 0 0;font-size:12px;color:#9CA3AF;">
+          {{ description.length }}/500 characters
+        </p>
       </div>
 
       <!-- Buttons -->
@@ -338,12 +361,15 @@ const formatDate = (d: string) =>
          STEP 4 — Confirm
     ════════════════════════════════════════ -->
     <div v-if="step === 4 && !success"
-      style="width:100%;max-width:620px;background:transparent;border:1px solid #E5E7EB;border-radius:16px;padding:32px;">
+      style="width:100%;max-width:620px;background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:32px;box-shadow:0 1px 8px rgba(0,0,0,0.04);">
 
       <div style="margin-bottom:24px;">
         <h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1C1917;margin:0 0 4px;">
           Confirm Reservation
         </h2>
+        <p style="margin:0;font-size:13px;color:#78716C;">
+          Please review your booking details before confirming
+        </p>
       </div>
 
       <!-- Summary card -->
@@ -371,7 +397,13 @@ const formatDate = (d: string) =>
       </div>
 
       <!-- Auto-assign notice -->
-      
+      <div style="display:flex;align-items:flex-start;gap:10px;background:#FEF3C7;border-radius:10px;padding:12px 16px;margin-bottom:24px;">
+        <span style="font-size:16px;flex-shrink:0;"></span>
+        <p style="margin:0;font-size:13px;color:#92400E;line-height:1.5;">
+          The system will automatically assign the best available table for you.
+          Your reservation status will be <strong>pending</strong> until confirmed by our team.
+        </p>
+      </div>
 
       <!-- Buttons -->
       <div style="display:flex;gap:12px;">
@@ -395,7 +427,7 @@ const formatDate = (d: string) =>
          SUCCESS STATE
     ════════════════════════════════════════ -->
     <div v-if="success"
-      style="width:100%;max-width:620px;background:transparent;border:1px solid #E5E7EB;border-radius:16px;padding:48px 40px;text-align:center;">
+      style="width:100%;max-width:620px;background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:48px 40px;box-shadow:0 1px 8px rgba(0,0,0,0.04);text-align:center;">
 
       <!-- Success icon -->
       <div style="width:72px;height:72px;background:#D1FAE5;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px;">

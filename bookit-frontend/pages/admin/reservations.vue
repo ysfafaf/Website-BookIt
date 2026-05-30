@@ -108,7 +108,7 @@ const handle = async (action: StatusAction, id: string) => {
                 <span style="font-size:14px;font-weight:500;color:#1C1917;">{{ r.user.name }}</span>
               </div>
             </td>
-            <td style="padding:12px 16px;color:#374151;font-size:13px;">{{ r.date }}</td>
+            <td style="padding:12px 16px;color:#374151;font-size:13px;">{{ r.date.split('T')[0] }}</td>
             <td style="padding:12px 16px;color:#374151;font-size:13px;">{{ r.time }}</td>
             <td style="padding:12px 16px;font-weight:600;color:#1C1917;font-size:13px;">
               T{{ String(r.table.table_number).padStart(2, '0') }}

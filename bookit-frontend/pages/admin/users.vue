@@ -190,7 +190,7 @@ const createUser = async () => {
 
         <!-- Notice -->
         <div style="background:#FEF3C7;border-radius:9px;padding:10px 14px;font-size:13px;color:#92400E;margin-bottom:20px;">
-          ℹ️ Customers register themselves. This form is for creating <strong>staff</strong> or <strong>admin</strong> accounts only.
+           Customers register themselves. This form is for creating <strong>staff</strong> or <strong>admin</strong> accounts only.
         </div>
 
         <!-- Error -->
@@ -204,7 +204,7 @@ const createUser = async () => {
           <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px;">
             Full name <span style="color:#D97706;">*</span>
           </label>
-          <input v-model="newUser.name" type="text" placeholder="John Doe"
+          <input v-model="newUser.name" type="text" placeholder="Full Name"
             style="width:100%;padding:10px 14px;border:1px solid #E5E7EB;border-radius:9px;font-size:14px;font-family:inherit;outline:none;background:#FAFAF9;box-sizing:border-box;" />
         </div>
 
@@ -222,7 +222,7 @@ const createUser = async () => {
           <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px;">
             Phone number
           </label>
-          <input v-model="newUser.phone_number" type="tel" placeholder="+62 812-xxxx-xxxx"
+          <input v-model="newUser.phone_number" type="tel" placeholder="08xxxxxxx"
             style="width:100%;padding:10px 14px;border:1px solid #E5E7EB;border-radius:9px;font-size:14px;font-family:inherit;outline:none;background:#FAFAF9;box-sizing:border-box;" />
         </div>
 

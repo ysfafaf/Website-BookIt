@@ -9,7 +9,7 @@ const app = express()
 // ─── Security & parsing ───────────────────────────────────────────
 app.use(helmet())
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3011',
+  origin: process.env.FRONTEND_URL || 'http://localhost:3002',
   credentials: true
 }))
 app.use(express.json({ limit: '10kb' })) // limit payload size

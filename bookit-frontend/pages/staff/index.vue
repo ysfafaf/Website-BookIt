@@ -26,7 +26,7 @@ const todayConfirmed = computed(() =>
   <div>
     <div style="margin-bottom:28px;">
       <h1 style="font-size:24px;font-weight:700;color:#1C1917;font-family:'Playfair Display',serif;margin:0;">Staff Dashboard</h1>
-
+      <p style="margin:4px 0 0;color:#78716C;font-size:14px;">Confirmed reservations ready for table preparation</p>
     </div>
 
     <!-- Stats -->
@@ -64,7 +64,7 @@ const todayConfirmed = computed(() =>
           </div>
           <div style="flex:1;">
             <div style="font-weight:700;font-size:15px;color:#1C1917;margin-bottom:3px;">{{ r.user.name }}</div>
-            <div style="font-size:13px;color:#78716C;">{{ r.date }} · {{ r.time }}</div>
+            <div style="font-size:13px;color:#78716C;">{{ r.date.split('T')[0] }} · {{ r.time }}</div>
             <div style="font-size:12px;color:#92400E;font-weight:600;margin-top:2px;text-transform:capitalize;">
               {{ r.table.table_type_name }} · confirmed
             </div>
@@ -73,7 +73,7 @@ const todayConfirmed = computed(() =>
         </div>
         <div v-if="r.description"
           style="margin-top:12px;padding:8px 12px;background:#F5F5F4;border-radius:8px;font-size:12px;color:#78716C;">
-           {{ r.description }}
+          📝 {{ r.description }}
         </div>
       </div>
     </div>
